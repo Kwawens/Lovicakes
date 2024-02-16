@@ -182,7 +182,7 @@
       }
 
       .modalContainer {
-        transition: all 0.3s ease-in-out;
+        transition: opacity 0.6s ease-in-out;
         background-color: rgba(0, 0, 0, 0.3);
         position: fixed;
         left: 0;
@@ -334,6 +334,7 @@
       </div>
     </div>
     <div class="modalContainer">
+      <div class="closeModal -right-[600px] -top-[210px] relative block cursor-pointer"><i class="text-white fa-solid fa-xmark"></i></div>
       <div class="modal font-[valentine2]">
         <h1 class="text-start">Hi Lovicakes,</h1>
         <br />
@@ -389,6 +390,8 @@
         var cit = $("#closeit");
         var letter = $(".letter");
         var modalContainer = $(".modalContainer");
+        let audio = new Audio("pasilyo.mp3");
+        var currentSongTime = 76;
 
         envelope.click(function () {
           envelope.addClass("open");
@@ -402,18 +405,21 @@
             });
         });
 
+        $(".closeModal").click(function(){
+          modalContainer.removeClass("show");
+          letter.addClass("availableToClick");
+          currentSongTime = 0;
+          audio.pause();
+        });
         $(".clickabe").click(function () {
           if (letter.hasClass("availableToClick")){
+            letter.removeClass("availableToClick");
             modalContainer.addClass("show");
-            playSound("pasilyo.mp3")
+            audio.loop = false;
+            audio.currentTime = currentSongTime;
+            audio.play();
           }
         });
-
-        function playSound(audioName) {
-          let audio = new Audio(audioName);
-          audio.loop = false;
-          audio.play();
-        }
       });
     </script>
   </body>
