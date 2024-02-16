@@ -224,7 +224,7 @@
       }
       .slide-track {
         display: flex;
-        width: calc(250px * 10);
+        width: calc(250px * 15);
         animation: autoScroll 40s linear infinite;
       }
       .slide {
@@ -398,6 +398,22 @@
             <div class="slide !w-auto">
               <img src="5.jpg" />
             </div>
+
+            <div class="slide">
+              <img src="1.jpg" />
+            </div>
+            <div class="slide">
+              <img src="2.jpg" />
+            </div>
+            <div class="slide">
+              <img src="3.jpg" />
+            </div>
+            <div class="slide">
+              <img src="4.jpg" />
+            </div>
+            <div class="slide !w-auto">
+              <img src="5.jpg" />
+            </div>
           </div>
         </div>
       </div>
@@ -411,8 +427,8 @@
         var cit = $("#closeit");
         var letter = $(".letter");
         var modalContainer = $(".modalContainer");
-        let audio = new Audio("pasilyo.mp3");
-        var currentSongTime = 76;
+        let cant = new Audio("cant.mp3");
+        let oneTime = false;
 
         envelope.click(function () {
           envelope.addClass("open");
@@ -429,16 +445,17 @@
         $(".closeModal").click(function () {
           modalContainer.removeClass("show");
           letter.addClass("availableToClick");
-          currentSongTime = 0;
-          audio.pause();
         });
         $(".clickabe").click(function () {
           if (letter.hasClass("availableToClick")) {
             letter.removeClass("availableToClick");
             modalContainer.addClass("show");
-            audio.loop = false;
-            audio.currentTime = currentSongTime;
-            audio.play();
+            cant.loop = true;
+            if (!oneTime) {
+              cant.currentTime = 2;
+              cant.play();
+              oneTime = true;
+            }
           }
         });
       });
