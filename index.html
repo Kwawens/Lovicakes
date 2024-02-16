@@ -246,6 +246,9 @@
         transform: translateZ(20px);
         transition: transform 1s;
       }
+      img:not(:hover) {
+        transition: transform 1s;
+      }
       .slider::before,
       .slide::after {
         background: linear-gradient(
@@ -304,8 +307,8 @@
         <div class="letter font-[valentine2] text-[14px]">
           <p class="words line1">Hi Lovicakes,</p>
           <p class="words line2">
-            Alam kong tapos na yung valentines kung nababasa mo to pero gusto ko
-            lang sabihin sayo na...
+            Alam kong tapos na ang valentines kapag nabasa mo ito pero I just
+            wanted to say na...
           </p>
         </div>
         <div class="hearts">
@@ -331,13 +334,34 @@
       </div>
     </div>
     <div class="modalContainer">
-      <div class="closeModal -right-[600px] -top-[210px] relative block cursor-pointer"><i class="text-white fa-solid fa-xmark"></i></div>
       <div class="modal font-[valentine2]">
+        <div class="closeModal relative cursor-pointer text-end">
+          <i class="text-black">x</i>
+        </div>
         <h1 class="text-start">Hi Lovicakes,</h1>
         <br />
-        <p class="text-justify indent-10 text-[14px]">
-          Alam kong tapos na yung valentines kung nababasa mo to pero gusto ko
-          lang sabihin sayo na salamat sa lahat 
+        <p class="text-justify indent-10 text-[14px] font-[system-ui]">
+          Alam kong tapos na ang valentines kapag nabasa mo ito pero I just
+          wanted to say na I really like you and im glad that I met you, sabi mo
+          nga it's almost two months na tayong magkakilala. To be honest hindi
+          ko nga alam kung bakit tayo nagkakilala pero I'm so happy that we did,
+          lalo na nung sinabi mo rin sakin na gusto mo ako, sa totoo lang nung
+          araw na yun hindi ko talaga alam kung ano sasabihin o gagawin kasi
+          hindi ko akalain na sasabihin mo yun at that day and it was my first
+          time hearing those words from someone. I know na hindi pa rin tayo
+          official sa relationship pero I'm ready to face the challenges na
+          mangyayari in the future saatin at willing ako na hintayin ka hangga't
+          maging ready kana, hindi naman kasi kailangan madaliin ang panahon
+          diba. Naitanong mo pala sakin dati kung bakit kita nagustuhan, gusto
+          mo na bang sagutin ko na? joke lang maghintay ka rin HAHHHAHA pero ano
+          ito lang masasabi ko, kahit sino o ano ka tanggap kita at sana tanggap
+          mo rin ako kung sino at ano ako bagama't alam kong may mga bagay pa
+          akong kailang ayusin, baguhin, i-improve at matutunan pero ill do my
+          best to achieve it. Thank you ulit for everything that you did to me,
+          you really changed me for the better and I hope na hindi ka magsawa
+          sakin at kahit ilang beses mo pa itanong sakin kung sure na ba ako
+          sayo, ito lang ang lagi kong sasagutin sayo "sure na talaga ako sayo
+          at ikaw at ikaw ang pipiliin ko" and I'm ten billion percent sure!!
         </p>
         <br />
         <div class="text-end text-[12px]">Your lovicakes, <br />Cleam</div>
@@ -402,14 +426,14 @@
             });
         });
 
-        $(".closeModal").click(function(){
+        $(".closeModal").click(function () {
           modalContainer.removeClass("show");
           letter.addClass("availableToClick");
           currentSongTime = 0;
           audio.pause();
         });
         $(".clickabe").click(function () {
-          if (letter.hasClass("availableToClick")){
+          if (letter.hasClass("availableToClick")) {
             letter.removeClass("availableToClick");
             modalContainer.addClass("show");
             audio.loop = false;
